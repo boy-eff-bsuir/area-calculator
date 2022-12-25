@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AreaCalculator.Core.Exceptions;
 using AreaCalculator.Core.Interfaces;
 
 namespace AreaCalculator.Core.Models
@@ -20,7 +21,7 @@ namespace AreaCalculator.Core.Models
             }
             else 
             {
-                throw new Exception("Invalid type");
+                throw new TypeMismatchException("Invalid type");
             } 
         }
     }
