@@ -2,6 +2,7 @@ namespace AreaCalculator.Core.Interfaces
 {
     public interface IFigureAreaCalculator
     {
-        double Calculate();
+        Type FigureType { get; init; }
+        double Calculate(object figure);
     }
 }

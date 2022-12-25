@@ -8,13 +8,20 @@ namespace AreaCalculator.Core.Models
 {
     public class TriangleAreaCalculator : IFigureAreaCalculator
     {
-        public double SideA { get; set; }
-        public double SideB { get; set; }
-        public double SideC { get; set; }
-        public double Calculate()
+        public Type FigureType { get; init; } = typeof(Triangle);
+
+        public double Calculate(object figure)
         {
-            var p = SideA + SideB + SideC / 2;
-            return Math.Sqrt(p * (p - SideA) * (p - SideB) * (p - SideC));
+            if (figure.GetType() == this.FigureType)
+            {
+                var triangle = (Triangle) figure;
+                var p = (triangle.SideA + triangle.SideB + triangle.SideC) / 2;
+                return Math.Sqrt(p * (p - triangle.SideA) * (p - triangle.SideB) * (p - triangle.SideC));
+            }
+            else 
+            {
+                throw new Exception("Invalid type");
+            } 
         }
     }
 }
