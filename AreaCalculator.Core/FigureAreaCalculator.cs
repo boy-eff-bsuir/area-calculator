@@ -1,6 +1,7 @@
 ﻿using System.Collections.Concurrent;
 using System.Reflection;
 using AreaCalculator.Core.Interfaces;
+using AreaCalculator.Core.Models;
 
 namespace AreaCalculator.Core;
 public class FigureAreaCalculator
@@ -23,6 +24,27 @@ public class FigureAreaCalculator
     {
         var type = typeof(T);
         return _calculators[type].Calculate(figure);
+    }
+
+    public bool IsTriangleRight(Triangle triangle)
+    {
+        double largestSide = triangle.SideA;
+        double bSide = triangle.SideB;
+        double cSide = triangle.SideC;
+        double temp;
+        if (bSide > largestSide)
+        {
+            temp = bSide;
+            bSide = largestSide;
+            largestSide = temp;
+        }
+        if (cSide > largestSide)
+        {
+            temp = cSide;
+            cSide = largestSide;
+            largestSide = temp;
+        }
+        return (largestSide * largestSide) == (bSide * bSide) + (cSide * cSide);
     }
 
     private void InitializeDictionary(FigureAreaCalculatorConfig config = null)
