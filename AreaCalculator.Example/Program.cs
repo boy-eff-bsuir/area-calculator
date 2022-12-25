@@ -1,9 +1,9 @@
 ﻿using AreaCalculator.Core;
 using AreaCalculator.Core.Models;
+using AreaCalculator.Example.Calculators;
 
-var circle = new Triangle();
-circle.SideA = 3;
-circle.SideB = 4;
-circle.SideC = 5;
-var calculator = new FigureAreaCalculator();
-Console.WriteLine(calculator.Calculate(circle));
+var config = new FigureAreaCalculatorConfig();
+var intCalculator = new IntCalculator();
+config.Add(typeof(int), intCalculator);
+var calculator = new FigureAreaCalculator(config);
+Console.WriteLine(calculator.Calculate(2));
