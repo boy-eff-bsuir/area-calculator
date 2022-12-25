@@ -13,13 +13,19 @@ public class FigureAreaCalculator
         InitializeDictionary();
     }
 
+    public FigureAreaCalculator(FigureAreaCalculatorConfig config)
+    {
+        _calculators = new Dictionary<Type, IFigureAreaCalculator>();
+        InitializeDictionary(config);
+    }
+
     public double Calculate<T>(T figure)
     {
         var type = typeof(T);
         return _calculators[type].Calculate(figure);
     }
 
-    private void InitializeDictionary()
+    private void InitializeDictionary(FigureAreaCalculatorConfig config = null)
     {
         var assembly = Assembly.GetExecutingAssembly();
         var types = assembly.GetTypes();
@@ -29,6 +35,13 @@ public class FigureAreaCalculator
             {
                 var calculator = (IFigureAreaCalculator) Activator.CreateInstance(type);
                 _calculators.Add(calculator.FigureType, calculator);
+            }
+        }
+        if (config is not null)
+        {
+            foreach (var pair in config.Calculators)
+            {
+                _calculators.Add(pair.Key, pair.Value);
             }
         }
     }

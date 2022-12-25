@@ -8,7 +8,7 @@ namespace AreaCalculator.Core.Models
 {
     public class CircleAreaCalculator : IFigureAreaCalculator
     {
-        public Type FigureType { get; init; } = typeof(Circle);
+        public Type FigureType { get; } = typeof(Circle);
 
         public double Calculate(object figure)
         {

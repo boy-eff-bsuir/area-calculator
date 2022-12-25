@@ -8,7 +8,7 @@ namespace AreaCalculator.Core.Models
 {
     public class TriangleAreaCalculator : IFigureAreaCalculator
     {
-        public Type FigureType { get; init; } = typeof(Triangle);
+        public Type FigureType { get; } = typeof(Triangle);
 
         public double Calculate(object figure)
         {
