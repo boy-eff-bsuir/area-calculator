@@ -8,16 +8,17 @@ namespace AreaCalculator.Core
 {
     public class FigureAreaCalculatorConfig
     {
-        public List<KeyValuePair<Type, IAreaCalculator>> Calculators { get; }
+        public List<KeyValuePair<Type, Type>> Calculators { get; }
 
         public FigureAreaCalculatorConfig()
         {
-            Calculators = new List<KeyValuePair<Type, IAreaCalculator>>();
+            Calculators = new List<KeyValuePair<Type, Type>>();
         }
 
-        public void Add(Type t, IAreaCalculator calculator)
+        public void Add<TFigure, TCalculator>() 
+            where TCalculator : IAreaCalculator
         {
-            Calculators.Add(new(t, calculator));
+            Calculators.Add(new(typeof(TFigure), typeof(TCalculator)));
         }
     }
 }

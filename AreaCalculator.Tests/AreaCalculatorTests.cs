@@ -52,9 +52,8 @@ public class AreaCalculatorTests
     {
         var config = new FigureAreaCalculatorConfig();
         var circle = new Circle(10);
-        var calculator = new CustomCircleCalculator();
         var expected = 1d;
-        config.Add(typeof(Circle), calculator);
+        config.Add<Circle, CustomCircleCalculator>();
         _sut = new(config);
         
         var result = _sut.Calculate(circle);

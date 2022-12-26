@@ -63,7 +63,8 @@ public class FigureAreaCalculator
         {
             foreach (var pair in config.Calculators)
             {
-                _calculators[pair.Key] = pair.Value;
+                var calculator = (IAreaCalculator)Activator.CreateInstance(pair.Value);
+                _calculators[pair.Key] = calculator;
             }
         }
     }
