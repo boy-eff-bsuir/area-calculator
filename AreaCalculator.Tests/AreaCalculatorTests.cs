@@ -14,7 +14,7 @@ public class AreaCalculatorTests
     public void ShouldCalculateCircleArea()
     {
         _sut = new();
-        var circle = new Circle();
+        var circle = new Circle(5);
         circle.Radius = 5;
         var expected = 78.5d;
 

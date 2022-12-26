@@ -29,17 +29,17 @@ namespace AreaCalculator.Core.Models
         {
             if (sideA <= 0)
             {
-                throw new ArgumentException($"Argument sideA should be a positive number, received {sideA}");
+                throw new ArgumentOutOfRangeException($"Argument sideA should be a positive number, received {sideA}");
             }
             if (sideB <= 0)
             {
-                throw new ArgumentException($"Argument sideB should be a positive number, received {sideB}");
+                throw new ArgumentOutOfRangeException($"Argument sideB should be a positive number, received {sideB}");
             }
             if (sideC <= 0)
             {
-                throw new ArgumentException($"Argument sideC should be a positive number, received {sideC}");
+                throw new ArgumentOutOfRangeException($"Argument sideC should be a positive number, received {sideC}");
             }
-            if ((sideA > sideB + sideC) || (sideB > sideA + sideC) || (sideC > sideA + sideB))
+            if ((sideA >= sideB + sideC) || (sideB >= sideA + sideC) || (sideC >= sideA + sideB))
             {
                 throw new ArgumentException("Invalid triangle");
             }
