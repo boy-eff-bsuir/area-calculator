@@ -27,10 +27,7 @@ public class AreaCalculatorTests
     public void ShouldCaclulateTriangleArea() 
     {
         _sut = new();
-        var triangle = new Triangle();
-        triangle.SideA = 3;
-        triangle.SideB = 4;
-        triangle.SideC = 5;
+        var triangle = new Triangle(3, 4, 5);
         var expected = 6d;
 
         var result = _sut.Calculate(triangle);
@@ -54,12 +51,12 @@ public class RightTriangleTestData : IEnumerable<object[]>
 {
     private List<object[]> _data = new List<object[]>() 
     {
-        new object[] { new Triangle() {SideA = 3, SideB = 4, SideC = 5} },
-        new object[] { new Triangle() {SideA = 3, SideB = 5, SideC = 4} },
-        new object[] { new Triangle() {SideA = 5, SideB = 4, SideC = 3} },
-        new object[] { new Triangle() {SideA = 5, SideB = 3, SideC = 4} },
-        new object[] { new Triangle() {SideA = 4, SideB = 5, SideC = 3} },
-        new object[] { new Triangle() {SideA = 4, SideB = 3, SideC = 5} }
+        new object[] { new Triangle(3, 4, 5) },
+        new object[] { new Triangle(3, 5, 4) },
+        new object[] { new Triangle(5, 4, 3) },
+        new object[] { new Triangle(5, 3, 4) },
+        new object[] { new Triangle(4, 5, 3) },
+        new object[] { new Triangle(4, 3, 5) }
     };
 
     public IEnumerator<object[]> GetEnumerator()
