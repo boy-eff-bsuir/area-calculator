@@ -56,14 +56,14 @@ public class FigureAreaCalculator
             if (type.IsAssignableTo(typeof(IAreaCalculator)) && type.IsClass)
             {
                 var calculator = (IAreaCalculator) Activator.CreateInstance(type);
-                _calculators.Add(calculator.FigureType, calculator);
+                _calculators[calculator.FigureType] = calculator;
             }
         }
         if (config is not null)
         {
             foreach (var pair in config.Calculators)
             {
-                _calculators.Add(pair.Key, pair.Value);
+                _calculators[pair.Key] = pair.Value;
             }
         }
     }

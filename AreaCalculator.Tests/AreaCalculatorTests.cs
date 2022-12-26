@@ -1,6 +1,7 @@
 using System.Collections;
 using AreaCalculator.Core;
 using AreaCalculator.Core.Models;
+using AreaCalculator.Tests.Calculators;
 using FluentAssertions;
 
 namespace AreaCalculator.Tests;
@@ -44,6 +45,21 @@ public class AreaCalculatorTests
         var result = _sut.IsTriangleRight(triangle);
 
         result.Should().BeTrue();
+    }
+
+    [Fact]
+    public void ShouldUpdateCalculatorValue()
+    {
+        var config = new FigureAreaCalculatorConfig();
+        var circle = new Circle(10);
+        var calculator = new CustomCircleCalculator();
+        var expected = 1d;
+        config.Add(typeof(Circle), calculator);
+        _sut = new(config);
+        
+        var result = _sut.Calculate(circle);
+
+        result.Should().BeApproximately(expected, _precision);
     }
 }
 
