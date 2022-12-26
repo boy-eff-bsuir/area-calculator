@@ -7,7 +7,7 @@ using AreaCalculator.Core.Interfaces;
 
 namespace AreaCalculator.Core.Models
 {
-    public class TriangleAreaCalculator : IFigureAreaCalculator
+    public class TriangleAreaCalculator : IAreaCalculator
     {
         public Type FigureType { get; } = typeof(Triangle);
 

@@ -6,7 +6,7 @@ using AreaCalculator.Core.Interfaces;
 
 namespace AreaCalculator.Example.Calculators
 {
-    public class IntCalculator : IFigureAreaCalculator
+    public class IntCalculator : IAreaCalculator
     {
         public Type FigureType { get; } = typeof(int);
 

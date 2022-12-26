@@ -7,7 +7,7 @@ using AreaCalculator.Core.Interfaces;
 
 namespace AreaCalculator.Core.Models
 {
-    public class CircleAreaCalculator : IFigureAreaCalculator
+    public class CircleAreaCalculator : IAreaCalculator
     {
         public Type FigureType { get; } = typeof(Circle);
 

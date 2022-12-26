@@ -1,6 +1,6 @@
 namespace AreaCalculator.Core.Interfaces
 {
-    public interface IFigureAreaCalculator
+    public interface IAreaCalculator
     {
         Type FigureType { get; }
         double Calculate(object figure);

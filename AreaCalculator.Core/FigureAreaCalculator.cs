@@ -6,17 +6,17 @@ using AreaCalculator.Core.Models;
 namespace AreaCalculator.Core;
 public class FigureAreaCalculator
 {
-    private Dictionary<Type, IFigureAreaCalculator> _calculators;
+    private Dictionary<Type, IAreaCalculator> _calculators;
 
     public FigureAreaCalculator()
     {
-        _calculators = new Dictionary<Type, IFigureAreaCalculator>();
+        _calculators = new Dictionary<Type, IAreaCalculator>();
         InitializeDictionary();
     }
 
     public FigureAreaCalculator(FigureAreaCalculatorConfig config)
     {
-        _calculators = new Dictionary<Type, IFigureAreaCalculator>();
+        _calculators = new Dictionary<Type, IAreaCalculator>();
         InitializeDictionary(config);
     }
 
@@ -53,9 +53,9 @@ public class FigureAreaCalculator
         var types = assembly.GetTypes();
         foreach (var type in types)
         {
-            if (type.IsAssignableTo(typeof(IFigureAreaCalculator)) && type.IsClass)
+            if (type.IsAssignableTo(typeof(IAreaCalculator)) && type.IsClass)
             {
-                var calculator = (IFigureAreaCalculator) Activator.CreateInstance(type);
+                var calculator = (IAreaCalculator) Activator.CreateInstance(type);
                 _calculators.Add(calculator.FigureType, calculator);
             }
         }
